@@ -33,11 +33,11 @@ then
 
   echo ""
   echo "CER file"
-  cat /app/.acme.sh/$DOMAIN_ecc/fullchain.cer
+  cat /app/.acme.sh/"$DOMAIN"_ecc/fullchain.cer
   echo ""
   echo ""
   echo "KEY file"
-  cat /app/.acme.sh/$DOMAIN_ecc/$DOMAIN.key
+  cat /app/.acme.sh/"$DOMAIN"_ecc/$DOMAIN.key
   echo ""
   echo ""
   echo $DOMAIN
