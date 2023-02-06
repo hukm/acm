@@ -29,7 +29,7 @@ then
 
   echo "Start certificate generation"
   # Generate wildcard certificate (this will take approx 130s)
-  ~/.acme.sh/acme.sh --server letsencrypt --issue -d $DOMAIN  -d "*.$DOMAIN" -d "www.$DOMAIN"  --dns dns_aws
+  ~/.acme.sh/acme.sh --server letsencrypt --issue -d $DOMAIN --dns dns_aws #  -d "*.$DOMAIN"
 
   # Update the certificate in the live app
   heroku certs:update "/app/.acme.sh/"$DOMAIN"_ecc/fullchain.cer" "/app/.acme.sh/"$DOMAIN"_ecc/$DOMAIN.key" --confirm $HEROKU_APP --app $HEROKU_APP
