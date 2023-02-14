@@ -10,7 +10,7 @@ set -e
 
 # Only run once per week (Heroku scheduler runs daily) or if there are arguments
 # This allows passing --force to force a run
-if [ "$(date +%u)" = 1 ] || [ "$#" -eq 1 ]
+if [ "$(date +%u)" = 6 ] || [ "$#" -eq 1 ]
 then
   # Download dependencies
   echo "Git clone"
