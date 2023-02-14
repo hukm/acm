@@ -23,13 +23,9 @@ then
   # Force ensures it doesnt fail because of lack of cron
   ./acme.sh --install --force
 
-  # Map to environment variables that the ACME script requires
-  # export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-  # export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-
   echo "Start certificate generation"
   # Generate wildcard certificate (this will take approx 130s)
-  ~/.acme.sh/acme.sh --server letsencrypt --issue -d $DOMAIN --dns dns_aws #  -d "*.$DOMAIN"
+  ~/.acme.sh/acme.sh --server letsencrypt --issue -d $DOMAIN  -d "*.$DOMAIN"  --dns dns_aws
 
   # Update the certificate in the live app
   heroku certs:update "/app/.acme.sh/"$DOMAIN"_ecc/fullchain.cer" "/app/.acme.sh/"$DOMAIN"_ecc/$DOMAIN.key" --confirm $HEROKU_APP --app $HEROKU_APP
